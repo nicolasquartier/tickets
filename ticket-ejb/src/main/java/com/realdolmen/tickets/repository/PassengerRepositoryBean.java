@@ -16,6 +16,7 @@ import java.util.List;
  * Created by NQRAZ66 on 19/02/2016.
  */
 @Stateless
+@LocalBean
 public class PassengerRepositoryBean implements PassengerRepositoryRemote{
     @PersistenceContext
     EntityManager em;

@@ -1,6 +1,7 @@
 package com.realdolmen.tickets.repository;
 
 import com.realdolmen.tickets.domain.Passenger;
+import com.realdolmen.tickets.service.AbstractJndiTest;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -17,7 +18,7 @@ import static org.junit.Assert.assertNotNull;
 /**
  * Created by NQRAZ66 on 29/02/2016.
  */
-public class PassengerRepositoryTestJNDI {
+public class PassengerRepositoryTestJNDI extends AbstractJndiTest{
 
     private static Context context;
     private static PassengerRepositoryRemote repository;
