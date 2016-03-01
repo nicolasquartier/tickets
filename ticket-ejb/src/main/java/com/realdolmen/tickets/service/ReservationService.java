@@ -7,15 +7,19 @@ import com.realdolmen.tickets.repository.FlightRepositoryBean;
 import com.realdolmen.tickets.repository.PassengerRepositoryBean;
 import com.realdolmen.tickets.repository.TicketRepositoryBean;
 
+import javax.ejb.AccessTimeout;
 import javax.ejb.EJB;
+import javax.ejb.Remove;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by NQRAZ66 on 1/03/2016.
  */
 @Stateful
+@AccessTimeout(value = 5, unit = TimeUnit.SECONDS)
 public class ReservationService implements ReservationServiceRemote {
 
     @EJB
@@ -50,6 +54,7 @@ public class ReservationService implements ReservationServiceRemote {
     }
 
     @Override
+    @Remove
     public Ticket makeReservation() {
         ticket = new Ticket();
         ticket.setPassenger(passenger);
