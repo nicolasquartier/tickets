@@ -1,7 +1,11 @@
 package com.realdolmen.tickets.service;
 
 
+import com.realdolmen.tickets.domain.Person;
+import com.realdolmen.tickets.interceptor.ProfilerInterceptor;
+
 import javax.ejb.*;
+import javax.interceptor.Interceptors;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Future;
@@ -9,7 +13,9 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 @Singleton
 @ConcurrencyManagement(ConcurrencyManagementType.CONTAINER)
+@Interceptors(ProfilerInterceptor.class)
 public class MatchMakerService implements MatchMakerRemote {
+
     @EJB
     private PersonServiceBean personServiceBean;
 
@@ -23,7 +29,7 @@ public class MatchMakerService implements MatchMakerRemote {
     @Override
     @Lock(LockType.WRITE)
     public int match(String a, String b) {
-        for(int i=0; i<10; i++ ) {
+        for(int i=0; i<5; i++ ) {
             linger();
             System.out.println("Calculating " + a + " " + b);
         }
@@ -42,7 +48,7 @@ public class MatchMakerService implements MatchMakerRemote {
 
     private void linger()  {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             throw new RuntimeException("Unable to linger", e);
         }

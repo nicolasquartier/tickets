@@ -6,6 +6,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 @Stateless
@@ -29,4 +30,5 @@ public class PersonRepositoryBean implements PersonRepositoryRemote {
     public List<Person> findAll() {
         return em.createQuery("select p from Person p", Person.class).getResultList();
     }
+
 }

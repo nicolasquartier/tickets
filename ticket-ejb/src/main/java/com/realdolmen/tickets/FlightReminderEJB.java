@@ -33,8 +33,8 @@ public class FlightReminderEJB {
     @EJB
     FlightRepositoryBean flightRepositoryBean;
 
-    @Schedule(hour = "*", minute = "*", second = "*", dayOfMonth = "*", month = "*", year = "*", persistent = false)
-    public void remindPassengersByEmailOfTheirFlight(Timer t) {
+    @Schedule(hour = "0", minute = "0", second = "*", dayOfMonth = "*", month = "*", year = "*", persistent = false)
+    public void remindPassengersByEmailOfTheirFlight(/*Timer timer*/) {
         Passenger p = passengerRepository.findPassengerById(3L);
         Flight flightOut = flightRepositoryBean.findById(1L);
         Flight flightReturn = flightRepositoryBean.findById(2L);
@@ -51,7 +51,7 @@ public class FlightReminderEJB {
             }
         }
 
-        t.cancel();//voor oefening slechts éénmaal uitvoeren
+        //timer.cancel();//voor oefening slechts éénmaal uitvoeren
         //(hour = "*", minute = "0", second = "0", dayOfMonth = "*", month = "*", year = "*", persistent = false)
     }
 }
