@@ -20,7 +20,6 @@ public class ReservationServiceTest extends AbstractJndiTest {
         rs.selectFlight(1L);
         Ticket ticket = rs.makeReservation();
         assertNotNull("Ticket shouldn't be null", ticket.getId());
-
     }
 
     @Test(expected = NoSuchEJBException.class)

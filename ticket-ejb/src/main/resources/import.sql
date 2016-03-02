@@ -8,7 +8,6 @@ insert into passenger(id, firstName, dateOfBirth, lastName, ssn, frequantFlyerMi
 insert into employee(lastName, ssn, firstName, frequantFlyerMiles) values('Quartier', '123-456-789', 'Nicolas', 1000);
 insert into employee(lastName, ssn, firstName, frequantFlyerMiles) values('Claeys', '987-654-321', 'Nicolas', 1000);
 
-
 insert into flight(id, number, departureTime, arrivelTime, airlineCompany, DTYPE) values(1, '123',  now(), now(), 'Quartier Airlines', 'DomesticFlight');
 insert into flight(id, number, departureTime, arrivelTime, airlineCompany, DTYPE) values(3, '789',  now(), now(), 'Quartier Airlines', 'DomesticFlight');
 insert into flight(id, number, departureTime, arrivelTime, airlineCompany, DTYPE) values(2,'456', now(), now(), 'Quartier Airlines', 'Flight');
